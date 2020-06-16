@@ -23,7 +23,6 @@ public class JSONLayout extends Layout {
 	public static final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
 	
 	static { format.setTimeZone(TimeZone.getTimeZone("UTC")); }
-	
 
 	public void activateOptions() {}
 	
