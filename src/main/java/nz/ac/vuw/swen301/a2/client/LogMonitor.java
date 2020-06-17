@@ -76,6 +76,8 @@ public class LogMonitor extends JFrame implements ActionListener, WindowListener
 		try {
 			httpClient.close();
 		} catch (IOException e1) {}
+		this.setVisible(false);
+		this.dispose();
 	}
 	
 	@Override

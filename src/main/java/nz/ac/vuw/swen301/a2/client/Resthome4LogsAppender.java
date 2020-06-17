@@ -57,6 +57,8 @@ public class Resthome4LogsAppender extends AppenderSkeleton {
 			
 			HttpResponse resp = httpClient.execute(post);
 			
+			post.releaseConnection();
+			
 			if(resp.getStatusLine().getStatusCode() == 400) {
 				throw new Error("The layout given is not suitable for this server");
 			} else if(resp.getStatusLine().getStatusCode() == 409) {
