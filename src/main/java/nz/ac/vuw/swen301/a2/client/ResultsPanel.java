@@ -11,9 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,15 +30,9 @@ public class ResultsPanel extends JPanel {
 		super();
 		this.setLayout(new BorderLayout());
 		JTable table = new JTable();
-		DefaultTableColumnModel cm = new DefaultTableColumnModel();
-		cm.addColumn(getColumn("timestamp"));
-		cm.addColumn(getColumn("level"));
-		cm.addColumn(getColumn("logger"));
-		cm.addColumn(getColumn("thread"));
-		cm.addColumn(getColumn("message"));
-		table.setTableHeader(new JTableHeader(cm));
 		table.setModel(this.model);
 		table.setFillsViewportHeight(true);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		this.add(new JScrollPane(table), BorderLayout.CENTER);
 	}
 	
@@ -48,13 +41,6 @@ public class ResultsPanel extends JPanel {
 		json.forEach((obj) -> { objs.add((JSONObject) obj); });
 		model.setList(objs);
 		model.fireTableDataChanged();
-	}
-
-	private static TableColumn getColumn(String s)
-	{
-		TableColumn col = new TableColumn();
-		col.setHeaderValue(s);
-		return col;
 	}
 	
 	private static final String[] cols = new String[] { "timestamp", "level", "logger", "thread", "message" };
