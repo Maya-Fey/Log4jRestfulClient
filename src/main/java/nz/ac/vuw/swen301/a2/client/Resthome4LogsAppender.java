@@ -30,6 +30,7 @@ public class Resthome4LogsAppender extends AppenderSkeleton {
 	public Resthome4LogsAppender() {
 		super();
 		httpClient = HttpClients.createDefault();
+		this.setLayout(new JSONLayout());
 	}
 	
 	public void close() {

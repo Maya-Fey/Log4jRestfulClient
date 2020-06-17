@@ -21,7 +21,6 @@ public class CreateRandomLogs {
 	
 	public CreateRandomLogs()
 	{
-		appender.setLayout(new JSONLayout());
 		logger.addAppender(appender);
 	}
 	
